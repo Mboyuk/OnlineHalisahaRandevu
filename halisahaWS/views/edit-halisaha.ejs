@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halı Sahanı Düzenle</title>
+    <link rel="shortcut icon" href="/photo/H.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/edit-profile.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" >
+    <link rel="stylesheet" href="/navbar.css">
+    <link rel="stylesheet" href="/css/halisaha-table.css">
+</head>
+<body>
+    
+    <%- include('inc/navbar'); %>
+   
+
+    <div class="pageDiv" style="width: 99%; margin-top: 120px;  ">
+      <div class="ustTable" style="width: 1050px; float: left; margin-left: 10px; height: 1010px; ">
+        <div style="width: 70%;" class="container">
+          <%- include('partials/messages'); %>
+        </div>
+        
+        <%var date=new Date()%>
+        <%var k=0%>
+        <%var l=0%>
+        <%var bool=true%>
+        <div style="background-color: #008641 ; color: white; width: 91%; margin-left: 70px; border-radius: 5px;"  >
+          <div style="margin-top: 12px;" >
+            <div style="text-align: center;" >
+            
+                <h2 style="text-transform:capitalize"><%=halisaha.name%></h2>
+            </div>
+          </div>
+          <div >
+              <div style="text-align: center;">
+                <label for="">Halı saha puanı: </label>
+                <%for(let i=1; i<=5; i++){%>
+      
+  
+                  <%if(avrPoint>=i){%>
+                    <span ><i style="color: #F3E300;" class="fas fa-star"></i></span>
+                  <%}%>
+                <%}%>
+              
+              
+                <%=avrPoint%>
+              
+              
+              
+              </div>
+          </div>
+          <div style="margin-top: 15px;" >
+            <span style="margin-left: 10px;"  for="">Halı Sahanın Mesajı: </span>
+              <span style="color: #F3E300;"><%=halisaha.content%></span>
+  
+          </div>
+        </div>
+        
+        <div  class="halisaha-table">
+          <table  class=" table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">saat/tarih</th>
+                  <th scope="col"><%=date.getDate()-1+"/"+(date.getMonth()+1)+"/"+(date.getFullYear())%></th>
+
+                  <th scope="col"><%=date.getDate()+"/"+(date.getMonth()+1)+"/"+(date.getFullYear())%></th>
+                  <th scope="col"><%=date.getDate()+1+"/"+(date.getMonth()+1)+"/"+(date.getFullYear())%></th>
+                  <th scope="col"><%=date.getDate()+2+"/"+(date.getMonth()+1)+"/"+(date.getFullYear())%></th>
+                  <th scope="col"><%=date.getDate()+3+"/"+(date.getMonth()+1)+"/"+(date.getFullYear())%></th>
+                  <th scope="col"><%=date.getDate()+4+"/"+(date.getMonth()+1)+"/"+(date.getFullYear())%></th>
+                  <th scope="col"><%=date.getDate()+5+"/"+(date.getMonth()+1)+"/"+(date.getFullYear())%></th>
+                  <th scope="col"><%=date.getDate()+6+"/"+(date.getMonth()+1)+"/"+(date.getFullYear())%></th>
+                </tr>
+              </thead>
+              <tbody>
+  
+                <%if(errorss==true){%>
+                  <%for(let a=0;a<15; a++ ){%>
+                    <tr >
+                      <%if(a+8<11) {%>
+                        <th ><%="0"+(a+8)+":00-"+"0"+(a+9)+":00"%></th>
+                    <%}else{%> 
+                        <th><%=(a+8)+":00-"+(a+9)+":00"%></th>
+                    <%}%> 
+                    <%for(let b=0;b<7; b++ ){%>
+                      <td style="background-color: red; text-align: center;">     
+                        <span style="color: white;">DOLU</span>                            
+                      </td>
+  
+                    <%}%>
+                  </tr>
+                  <%}%>
+  
+               <%}else{%> 
+                  <%for(let i=0;i<15; i++ ){%>
+  
+                      
+                  <tr>
+                      <%if(i+8<=8) {%>
+                          <th><%="0"+(i+8)+":00-"+"0"+(i+9)+":00"%></th>
+                      <%}else{%> 
+                          <th><%=(i+8)+":00-"+(i+9)+":00"%></th>
+                      <%}%>   
+                      
+                      <%for(let j=0;j<8; j++ ){%>
+                          
+                          <%const date=new Date()%>
+                          <%const gun=date.getDate()+j-1%>
+                          <%const simdikigun=date.getDate()%>
+                          <%const ay=date.getMonth()+1%>
+                          <%let str1=gun+"-"+ay%>
+                          <%const saatDizi= saat[i].split("-")%>
+                          <%const saatKont=saatDizi[0]%>
+                          <%const saatDizi2= saatKont.split(":")%>
+                          <%const saatKontPure=saatDizi2[0]%>
+                          <%const hourim= date.getHours()%>
+                          <% var spltSaat1=saat[i].split("-")[0]%>
+                          <%var spltSaat3=spltSaat1.split(":")[0];%>
+                        
+  
+                          <%for(let m=0;m<halisahaRandevu.tarih.length; m++ ) {%>  
+                              <%if((halisahaRandevu.tarih[m]==(str1) && halisahaRandevu.saat[m]==(saat[i]) ) ) {%>  
+                                   
+                                <td style="padding-left: -5px !important; text-align: left; ">     
+                                  <!-- <span style="color: white;">DOLU</span>                             -->
+                                  <button style="width: 35px; font-size: 10px; padding-left: 5px;" data-isemp="dolu" data-tarih="<%=str1%>" data-saat="<%=saat[i]%>" type="button" class="btnfor btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Dolu</button>
+
+                                  <%if(Number(str1.split("-")[0])<= simdikigun){%>
+                                    <%if(Number(str1.split("-")[0])== simdikigun){%>
+                                      <%if(Number(spltSaat3) < hourim){%>
+                                        <%var videoBool=true%>
+                                        <%halisaha.video.tarih.forEach((element,index)=>{%>
+                                          <%if(element==str1){%>
+                                            <%if(halisaha.video.saat[index]==saat[i]){%>
+                                             <% videoBool=false%>
+                                            <%}%>    
+                                          <%}%>
+                                        <%})%>
+                                        <%if(videoBool){%>
+                                            <button style="width: 35px; font-size: 10px; padding-left: 3px;" data-isemp="video" data-tarih="<%=str1%>" data-saat="<%=saat[i]%>" type="button" class="btnVideo btn btn-danger" data-toggle="modal" data-target="#exampleModalVideo" data-whatever="@mdo">Video</button>
+                                        <%}%>
+                                      <%}%>
+                                    <%}else{%>
+
+                                      <%var videoBool2=true%>
+                                      <%halisaha.video.tarih.forEach((element,index)=>{%>
+                                        <%if(element==str1){%>
+                                          <%if(halisaha.video.saat[index]==saat[i]){%>
+                                            <%videoBool2=false;%>
+                                          <%}%>    
+                                        <%}%>
+                                      <%})%>
+                                      <%if(videoBool2){%>
+                                          <button style="width: 35px; font-size: 10px; padding-left: 3px;" data-isemp="video" data-tarih="<%=str1%>" data-saat="<%=saat[i]%>" type="button" class="btnVideo btn btn-danger" data-toggle="modal" data-target="#exampleModalVideo" data-whatever="@mdo">Video</button>
+                                      <%}%>
+                                      <!-- <button style="width: 35px; font-size: 10px; padding-left: 3px;" data-isemp="video" data-tarih="<%=str1%>" data-saat="<%=saat[i]%>" type="button" class="btnVideo btn btn-danger" data-toggle="modal" data-target="#exampleModalVideo" data-whatever="@mdo">Video</button> -->
+
+
+                                    <%}%>
+
+                                  <%}%>
+                                </td>
+  
+                                 <%bool=false;%> 
+                                  <% break; %>
+                              <%}%>
+                          <%}%> 
+                          <%if(bool!=false){%>
+                            <td style="text-align: center;" > 
+                              <div class="isEmpty" style="width: 100%; height: 30px; " >
+                                <!-- <a  href="/halisaha/karaman/<%=halisaha.id%>/<%=halisaha.slug%>/<%=str1%>/<%=saat[i]%>/reservation">
+                                  <p style="width: 100% ; height: 100%; margin: 0px;" >BOŞ</p>   
+                                </a> -->
+                                <button data-isemp="bos" data-tarih="<%=str1%>" data-saat="<%=saat[i]%>"  type="button" class="btnfor btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><%=halisaha.fiyat%> <i class="fas fa-lira-sign"></i></button>
+
+                              </div>
+                                 
+                                                      
+                            </td>
+                          <%}%>     
+                         
+                          <%bool=true%>
+                          
+                      <%}%>    
+                     
+                     
+                  </tr>
+                <%}%>    
+               
+              <%}%>  
+              </tbody>
+            </table>
+      
+        </div>
+      
+  
+  
+      </div>
+      <div class="anaSagDiv"   style=" width: 550px; display: inline-block;  ">
+  
+          <div style="height: 1010px;" >
+            <div style="margin-left: 30px;" class="container resimdiv">
+              <div class="row">
+                <div style="height: 300px; " class="row">
+                  <div style="width: 300px;  " id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                  
+                      <%halisaha.image.forEach((element,index)=>{%>
+                        <%if(index==0){%>
+                          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <%}else{%>
+                          <li data-target="#carouselExampleIndicators" data-slide-to="<%=index%>"></li>
+                        <%}%>
+            
+                      <%})%>
+                    
+      
+                    </ol>
+                    <div class="carousel-inner">
+                      <%halisaha.image.forEach((element,index)=>{%>
+                        <%if(index==0){%>
+                         
+                            <div class="carousel-item active">
+                              <a href="#" class="pop">
+                              <img  width="300px" height="300px"  class="d-block w-100 swipebox" src="/halisahaResimler/<%=element%>" alt="First slide">
+                            </a>
+                            </div>
+                       
+                         
+            
+                        <%}else{%>
+                          
+                            <div class="carousel-item">
+                              <a href="#" class="pop">
+                              <img width="300px" height="300px" class="d-block w-100 swipebox" src="/halisahaResimler/<%=element%>" alt="Second slide">
+                            </a>
+                            </div>
+                         
+                         
+            
+                        <%}%>
+            
+                      <%})%>
+                      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </div>
+                  </div> 
+                </div>
+              </div>
+            </div>
+            <div style=" border-radius: 10px; margin-right: 72px; height: 280px; border: 3px solid #008641; margin-left: 15px;margin-top: 10px; ">
+              <h2 style="margin-left: 10px;">Halı Saha Özellikleri</h2>
+                <%halisahaOzellikleri.forEach(element=>{%>
+                              
+                  <%if(halisaha.ozellik.includes(element)){%>
+                      <%const index=halisaha.ozellik.indexOf(element)%>
+                      <div style="float: left; width: 150px;">
+                        <li  style="margin-left: 20px; list-style: none;  margin-right: 20px; margin-top: 20px;">
+                          <i style="color: green;" class="fas fa-check-square"></i>  
+                          <%=halisaha.ozellik[index]%>
+                            
+                        </li>
+                      </div>
+                  <%}else{%>
+                      <div style="float: left; width: 150px;">
+                        <li style="margin-left: 20px; list-style: none; margin-right: 20px; margin-top: 20px;">
+                          <i style="color: red;" class="fas fa-window-close"></i>  
+                          <%=element%>
+                            
+                        </li>
+                      </div>
+                  <%}%>
+                
+            
+        
+                <%})%>
+            </div>
+            <div style="border-radius: 10px; width: 308px; height: 220px; border: solid 3px #008641 ; float: left; margin-left: 20px; margin-top: 20px;">
+              <h2 style="text-align: center;">Halı Saha Bilgileri</h2>
+              <div style="margin-left: 5px;">
+                <span style="font-weight: bold;"> Adres:</span> <%=halisaha.adress%>
+              </div>
+              <div style="margin-top: 10px; margin-left: 5px;">
+                <span style="font-weight: bold;">Şehir:</span>  <%=halisaha.city%>
+              </div>
+              <div style="margin-top: 10px; margin-left: 5px;">
+                <span style="font-weight: bold;"> Sosyal Medya Hesapları:</span> <%=halisaha.socialMedia%>
+              </div>
+              <div style="margin-top: 10px; margin-left: 5px;">
+                <span style="font-weight: bold;"> Telefon Numarası:</span> <%=halisaha.phoneNumber%>
+              </div>
+  
+            </div>
+            <div style="border-radius: 10px; width: 308px; height: 130px; border: solid 3px #008641 ; float: left; margin-left: 20px; margin-top: 20px;">
+              <h2 style="text-align: center;">Reklam Vermek İçin</h2>
+              <div style="margin-left: 5px;">
+                <span ><span style="font-weight: bold;">halisahacim@yandex.com </span> adresi ile irtibata geçiniz.</span> 
+              </div>
+             
+
+          </div>
+          </div>
+        
+      </div>
+    </div>
+
+        <!-- halı saha ozellikleri ekle-->
+    <div style="margin-bottom: 100px; margin-left: 94px; width: 826px; margin-top: 80px;" class="halisahOzellikEkle">
+          <div style="border: 3px solid #008641; border-radius: 10px;" class="row">
+              <div class="col-3">
+                <h4>Halı saha özellik ekle</h4>
+                  <form style="text-align: left;"  action="edit" method="GET">
+                      <%halisahaOzellikleri.forEach(element=>{%>
+                          <%if(!halisaha.ozellik.includes(element)){%>
+                              <label for=""><%=element%></label> <input type="checkbox" name="ozellik" value="<%=element%>"> <br>
+                          <%}%> 
+                      <%})%>
+  
+      
+                      <button style="width: 90px;" type="submit" class="btn btn-primary btn-block">
+                          EKLE
+                        </button>
+      
+                  </form>
+              </div>
+              <div  class="col-5">
+                <h4>Halı saha özellik kaldır</h4>
+                  <form style="text-align: left;" action="edit" method="GET">
+                      <%halisahaOzellikleri.forEach(element=>{%>
+                          <%if(halisaha.ozellik.includes(element)){%>
+                              <label for=""><%=element%></label> <input type="checkbox" name="sil" value="<%=element%>"> <br>
+                          <%}%> 
+                      <%})%>
+      
+                      <button style="width: 90px;" type="submit" class="btn btn-primary btn-block">
+                          SİL
+                        </button>
+      
+                  </form>
+              </div>
+
+              <div style="text-align: left; margin-top: 50px; padding-bottom: 20px; " class="col-4">
+                <button   type="button" class=" btn btn-danger" data-toggle="modal" data-target="#icerikDegistir" data-whatever="@mdo">Halı saha mesajı güncelle</button>
+
+                <button  style="margin-top: 20px;"  type="button" class=" btn btn-danger" data-toggle="modal" data-target="#fiyatDegistir" data-whatever="@mdo">Fiyat Bilgisi için tıkla</button>
+ 
+                <button  style="margin-top: 20px;"  type="button" class=" btn btn-danger" data-toggle="modal" data-target="#fotoYukle" data-whatever="@mdo">Resim Eklemek İçin Tıkla</button>
+                
+                <button  style="margin-top: 20px;" type="button" class=" btn btn-danger" data-toggle="modal" data-target="#fotoSil" data-whatever="@mdo">Resim Silmek İçin Tıkla</button>
+            
+             
+              </div>
+              
+          </div>
+    </div>   
+
+        <!-- <div style="height: 100px; margin-top: 20px;" class="container">
+          <div class="row">
+            <label for="">Halısaha isminiz: </label>
+            <li style="list-style: none;"> <%=halisaha.name%></li>
+            <button id="changeNameButton"  type="button" class=" btn btn-danger" data-toggle="modal" data-target="#changeNameModal" data-whatever="@mdo">Değiştirmek için tıkla</button>
+ 
+          </div>
+        </div> -->
+
+    <!-- İcerik değiştir modal-->
+
+    <div class="modal fade" id="icerikDegistir" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Halı saha mesajı güncelle</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="edit/message/edit-message" id="preForm" method="POST" >
+              
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Halı saha mesajını giriniz:</label>
+                <textarea class="form-control" id="message-text" name="content" form="preForm"></textarea>
+           
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">
+                  Güncelle
+                </button>
+            </form> 
+         </div>
+        </div>
+     </div>
+   </div>
+    <!-- fiyat değiştir modal-->
+    <div class="modal fade" id="fiyatDegistir" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Fiyat değiştir</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="edit" method="GET" >
+              <label for="">fiyat bilgisi güncelle</label>
+              <input type="number" name="fiyat" />
+              <button type="submit" class="btn btn-primary btn-block">
+                  Yükle
+                </button>
+            </form> 
+         </div>
+        </div>
+     </div>
+   </div>
+    
+   <!-- foto yükleme modal-->
+   <div class="modal fade" id="fotoYukle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Fotoğraf Yükle</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="/halisaha/imageupload/upload" method="POST" enctype="multipart/form-data">
+              <input type="file" name="halisaha_image" multiple/>
+              <button type="submit" class="btn btn-primary btn-block">
+                  Yükle
+                </button>
+            </form> 
+         </div>
+        </div>
+     </div>
+   </div>
+    <!-- foto silme modal-->
+    <div class="modal fade" id="fotoSil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Fotoğraf Sil</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="/halisaha/imagedelete/delete"  method="POST" >
+              
+              <%halisaha.image.forEach(element=>{%>
+               
+               <button type="submit" name="fotosl" value="<%=element%>"><img width="100px" src="/halisahaResimler/<%=element%>" alt=""></button> 
+
+              <%})%>
+            
+        
+             
+             </form>
+
+         </div>
+        </div>
+     </div>
+   </div>
+
+
+        <!-- modallll -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Halı Sahanıza Randevu Ekleyin veya Silin</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="edit" id="preForm" method="POST" >
+                  Tarih
+                  <li  id="tarih"></li>
+                 Saat
+                  <li id="saat"></li>
+
+                    <label id="randevulabel" for="">Randevu işlemi: </label>
+                    <input type="checkbox" name="bosmu" id="bosmuid" >
+                  
+                  <br>
+                  
+
+                 
+                  <input style="display: none;" type="text" name="clock" id="saatt">
+                  <label for="">Lütfen Şifrenizi Giriniz:</label>
+                  <input type="password" name="pass" id="pass">
+                  <input style="display: none;" type="text" name="tarih" id="tarihh">
+                
+                
+                
+              
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+              <button type="submit" class="btn btn-primary">Randevu Güncelle</button>
+            </div>
+        </form>
+          </div>
+        </div>
+      </div>
+    </div>
+      <!--modal video yükleme-->
+      <div class="modal fade" id="exampleModalVideo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Halı Sahanıza Video Ekleyin</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="edit/video/video-upload" method="post" enctype="multipart/form-data" >
+                <input type="file" name="video-upload" />
+                <br>
+                   <label for="">Tarih</label>
+                  <li  id="tarihi"></li>
+                 Saat
+                  <li id="saati"></li>
+
+                 
+                  
+                  <br>
+                  
+
+                 
+                  <input style="display: none;" type="text" name="saati" id="saatim">
+                  
+                  <input style="display: none;" type="text" name="tarihi" id="tarihim">
+                
+                
+                
+              
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+              <button type="submit" class="btn btn-primary">Video Ekle</button>
+            </div>
+        </form>
+          </div>
+        </div>
+      </div>
+    </div>
+      <!-- modal isim değişikliği-->
+      <!-- <div class="modal fade" id="changeNameModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Düzenle</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="edit" id="preForm" method="GET" >
+                  İsim
+                  <li id="changeNameLi"><%=halisaha.name%></li>
+                
+                 <input type="text" name="isim" id="isimInputText">
+                  
+                  <br>
+   
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+              <button type="submit" class="btn btn-primary">Değiştir</button>
+            </div>
+        </form>
+          </div>
+        </div>
+      </div> -->
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     
+
+      <script>
+           const btn=document.getElementsByClassName("btnfor");
+           
+           const liTarih=document.getElementById("tarih");
+           const liSaat=document.getElementById("saat");
+           const textTarih=document.getElementById("tarihh")
+           const textSaat=document.getElementById("saatt")
+           const bosmu=document.getElementById("bosmuid");
+           const randevulabel=document.getElementById("randevulabel")
+
+           const btnVideo=document.getElementsByClassName("btnVideo");
+             
+           const liTarihi=document.getElementById("tarihi");
+           const liSaati=document.getElementById("saati");
+           const textTarihim=document.getElementById("tarihim")
+           const textSaatim=document.getElementById("saatim")
+           var secim=null;
+           const btnVideos=[].slice.call(btnVideo);
+           btnVideos.forEach(element1=>{
+              element1.addEventListener("click",(e)=>{
+                secim=$(element1);
+                var date=new Date();
+                const day=date.getDate()
+                const hourNow=date.getHours();
+                console.log(hourNow)
+
+                console.log(day)
+
+                var tarihi=secim.data("tarih");
+                var saati=secim.data("saat")
+
+                var spltTarih=tarihi.split("-")[0];
+                var spltSaat=saati.split("-")[0]
+                var spltSaat2=spltSaat.split(":")[0];
+
+
+                liTarihi.textContent=tarihi;
+                liSaati.textContent=saati;
+                textSaatim.value=saati;
+               
+                textTarihim.value=tarihi
+
+                if(Number(spltTarih)<day){
+                  
+                }
+                if(Number(spltTarih)==day){
+                    if(Number(spltSaat2)<hourNow){
+                        console.log("eşit ve küçük")
+                    }
+
+                }
+              
+              console.log(tarih);
+            })
+         })
+
+           
+            const btns=[].slice.call(btn);
+           var seci=null;
+        //    $("#ali").click(function(){
+        //        seci=$(this);
+        //        var tarih=seci.data("tarih");
+        //        console.log(tarih)
+        //    })
+ 
+
+            btns.forEach(element=>{
+                element.addEventListener('click', (e) =>{
+                   
+                    seci=$(element);
+                    var tarih=seci.data("tarih");
+                    var saat=seci.data("saat")
+                    var isEmpty=seci.data("isemp");
+                    console.log(tarih+" "+isEmpty)
+                    liTarih.textContent=tarih;
+                    liSaat.textContent=saat;
+                    textSaat.value=saat;
+                    textTarih.value=tarih
+                    bosmu.value=isEmpty;
+
+                    if(isEmpty=="bos"){
+                        randevulabel.textContent="Randevu Al: ";
+                    }else if(isEmpty=="dolu"){
+                        randevulabel.textContent="Randevuyu Sil: ";
+                    }
+
+
+                })
+            })
+      </script>
+
+   
+       
+     
+      <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  -->
+</body>
+</html>

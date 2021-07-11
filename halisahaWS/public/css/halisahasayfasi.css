@@ -1,0 +1,155 @@
+body{
+    background-color: #DDDDDC !important;
+}
+
+
+table td, table th{
+    padding: 15px;
+}
+table tr:nth-child(odd){
+    background-color: #FFFFFF;
+}
+table tr:nth-child(even){
+    background-color: #ECECEC;
+}
+table th{
+    background-color: #34373B;
+}
+div.row input{
+    background-color: #FFFFFF;
+}
+.filtre div:nth-child(even) {
+    background-color: #FFFFFF;
+}
+.filtre div:nth-child(odd) {
+    background-color: #ECECEC;
+}
+.filtre div{
+    height: 35px;
+}
+.filtre-2 div:nth-child(even){
+    background-color: #FFFFFF;
+}
+.filtre-2 div:nth-child(odd){
+    background-color: #ECECEC;
+}
+.filtre-2 div{
+    height: 35px;
+}
+.filtre div, .filtre-2 div{
+    text-align: center;
+}
+.form{
+    position: fixed;
+    width: 200px;
+    z-index: 1;
+
+}
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+thead tr:first-child th:first-child{
+    border-top-left-radius: 10px;
+}
+thead tr:last-child th:last-child{
+    border-top-right-radius: 10px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+table thead tr th a:hover{
+   
+    text-decoration: none;
+    color: #F3E300 !important;
+}
+table thead tr th a{
+   
+    text-decoration: none;
+}
+
+
+table tbody tr td a{
+    text-transform: capitalize;
+    text-decoration: none;
+    color: black;
+}
+table tbody tr td a:hover{
+   
+    text-decoration: none;
+    color: white !important;
+}
+.form div.filtre div {
+    text-align: left;
+    height: 40px;
+}
+.form div.filtre div input {
+    margin-left: 5px;
+    
+    margin-top: 7px;
+    
+}
+
+.form div.filtre div:hover{
+  background-color: #F3E300;
+  color: white;
+    
+}
+.form div div input.largeCheckbox{
+    padding-top: 7px;
+    
+    width: 20px;
+    height: 20px;
+    
+   
+}
+.siralamaDiv div div {
+   background-color: #DDDDDC;
+
+    
+}
+.siralamaDiv div div div input{
+    border-radius: 5px;
+    background-color:#28a745 ;
+    color: white;
+    height: 40px;
+    
+}
+.siralamaDiv div div div input:hover{
+  
+    background-color:#F3E300 ;
+    color: black;
+}
+.tablo tr:hover{
+    background-color: #F3E300;
+    color: white;
+}
+.tablo th{
+    background-color:#28a745 ;
+}
+.siralamaDiv div button{
+    background-color:#28a745 ;
+    color: white;
+}
+.siralamaDiv div button:hover{
+    background-color:#F3E300 ;
+    color: black;
+}
+.filitreArama{
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color:#28a745 !important;
+    color: white;
+}
+.filitreArama:hover{
+    background-color:#F3E300 !important;
+    color: black;
+}
+.tablo1 th{
+    background-color: #28a745;
+}
+.tablo1 tr:hover{
+    background-color:#F3E300 ;
+    color: white;
+}

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Önceki Randevular</title>
+    <link rel="shortcut icon" href="/photo/H.png" type="image/x-icon" />
+   
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" >
+    <link rel="stylesheet" href="/css/pre-transactions.css">
+    <link rel="stylesheet" href="/navbar.css">
+    <style>  
+        body{
+          background-color: #DDDDDC;
+        }
+         
+        .star {  
+            font-size : 20px;  
+        }  
+    </style> 
+</head>
+<body>
+    
+    <%- include('inc/navbar'); %>
+    <%var date=new Date()%>
+    <%var yil=date.getFullYear() %>
+    <div style="margin-top: 100px; height: 400px; overflow:auto;" class="container">
+        <div class="">
+           <h2 style="margin-left: auto; margin-right: auto;" > Önceki İşlemler</h2>
+        </div>
+        <div class="">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                      <th style="width: 20px !important;"  scope="col">#</th>
+                    
+                      <th scope="col">Halisaha İsmi</th>
+                      <th scope="col">Randevu Tarih</th>
+                      <th scope="col">Randevu Saat</th>
+                      <th scope="col">İşlem Tarihi</th>
+                      <th scope="col">Yorum Yap ve Puanla</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <%for(let i=0;i<uzunluk; i++){%>
+                    <tr>
+                        <th scope="row"><%=i+1%></th>
+                       
+                        <td><%=user.preTransactions.name[i]%></td>
+                        <td><%=user.preTransactions.tarih[i] +"-"+ yil%></td>
+                        <td><%=user.preTransactions.saat[i]%></td>
+                        <td><%=user.preTransactions.createAt[i]%></td>
+                          <%if(yorumHakkiId.includes(user.preTransactions.halisaha[i]))%>
+                              <%var index=yorumHakkiId.indexOf(user.preTransactions.halisaha[i])%>
+                              <%var yhsayi= yorumHakkiSayisi[index]%>
+                              <%if(yhsayi>0){%>
+
+                                <%if(Number(user.preTransactions.tarih[i].split("-")[0])> date.getDate() ){%>
+                                  <td><p>Zamanı gelmeyen randevuya yorum yapamassınız!</p></td>
+                                <%}else{%>
+                                  <td>
+                                    <button id="<%=user.preTransactions.halisaha[i]%>" type="button" class="btnfor btn btn-primary arabtn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" >Yorum Yap ve Puanla</button>
+                                    
+                                  </td>
+                                <%}%>
+
+                              <%}else{%>
+                                  <td>
+                                    <p>yorum yapıldı</p>                                    
+                                  </td>
+                                 
+
+                              <%}%>
+
+                           
+                      
+                    </tr>
+                   
+                <%}%>     
+                </tbody>
+
+            </table>
+            
+        </div>
+    </div>
+
+
+    
+
+    <div style="margin-top:50px;" class="container">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th style="width: 50px !important;" scope="row" scope="col">#</th>
+            <th scope="col">Halı saha ismi</th>
+            <th scope="col">saat</th>
+            <th scope="col">tarih</th>
+            <th scope="col">Video izle</th>
+          </tr>
+        </thead>
+        <tbody>
+  
+          <%videoArray.forEach((element,index)=>{%>
+              <tr>
+                <th><%=index+1%></th>
+                <td><%=halisahaName[index]%></td>
+                <td><%=halisahaSaat[index]%></td>
+                <td><%=halisahaTarih[index]%></td>
+                <td>  <button id="/halisahaVideo/<%=element%>"  type="button" class="videoBtn btn btn-primary arabtn" data-toggle="modal" data-target="#exampleModalVideo" data-whatever="@mdo" data-backdrop="static">Video İzle</button>
+               
+                </td>
+              </tr>
+  
+          <%})%>
+        </tbody>
+      </table>
+    </div>
+    
+    
+  <!-- video modal -->
+  <div class="modal fade" id="exampleModalVideo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Yorum Yap</h5>
+          <button type="button" class="close " onclick="kapat()" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         
+          
+            
+            <video id="video" width="400" controls></video>
+
+         
+        </div>
+        <div class="modal-footer">
+          
+          <button onclick="kapat()" type="button" class="btn btn-secondary " data-dismiss="modal">Kapat</button>
+        
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Yorum Yap</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="pre-transactions" id="preForm" method="POST" >
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Puan:</label>
+              <span id="1" class = "ok fa fa-star star"></span> 
+              <span id="2" class = "ok fa fa-star star"></span> 
+              <span id="3" class = "ok fa fa-star star"></span> 
+              <span id="4" class = "ok fa fa-star star"></span> 
+              <span id="5" class = "ok fa fa-star star"></span>
+              <input style="display: none;" type="text" name="puan" id="puan" value="0">
+              <input style="display: none;" type="text" name="halisahaId" id="halisahaId" value="">
+
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Yorumunuz:</label>
+              <textarea class="form-control" id="message-text" name="comment" form="preForm"></textarea>
+         
+            </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+          <button type="submit" class="btn btn-primary">Gönder</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
+
+
+ 
+
+ 
+    <script>
+        const btn=document.getElementsByClassName("btnfor");
+        const btns=[].slice.call(btn);
+        
+        const textValue2=document.getElementById("halisahaId")
+        btns.forEach(element=>{
+            element.addEventListener('click', (e) =>{
+                
+                console.log(element.id)
+                textValue2.value=element.id
+
+            })
+        })
+        var videoLink=document.getElementById("abc");
+        console.log(videoLink)
+        const videoBtn=document.getElementsByClassName("videoBtn");
+        const vidoBtns=[].slice.call(videoBtn);
+
+        
+       
+        vidoBtns.forEach(element=>{
+            element.addEventListener('click', (e) =>{
+                
+              const video = document.getElementById('video');
+             const source = document.createElement('source');
+              
+              source.setAttribute('src', element.id);
+
+              video.appendChild(source);
+              //video.play();
+
+              // setTimeout(function() {  
+              //     video.pause();
+
+              //     source.setAttribute('src', 'http://www.tools4movies.com/trailers/1012/Despicable%20Me%202.mp4'); 
+
+              //     video.load();
+              //     video.play();
+              // }, 3000);
+
+            })
+        })
+        setTimeout(() => {
+          console.log("adfasdf")
+        }, 1000);
+        function kapat(){
+          const video = document.getElementById('video');
+          const source=document.getElementById('source');
+          video.pause()
+          //source.remove();
+          window.location.reload();
+          //video.removeChild(source)
+
+        }
+
+
+        const yildiz=document.getElementsByClassName("ok");
+        const textValue=document.getElementById("puan")
+        const lbl=document.getElementById("puan1")
+        const stars=[].slice.call(yildiz);
+        console.log(yildiz[0])
+        stars.forEach((element,index) => {
+           
+            element.addEventListener('click', (e) =>{
+                console.log(index)
+
+                textValue.value=index+1;
+
+                belirle(index)
+                console.log(element)
+            })
+  
+
+        });
+
+        function belirle(index){
+            for(let i=0;i<index+1; i++){
+                stars[i].style.color="yellow";
+            }
+            for(let j=4;j>index;j--){
+                stars[j].style.color="black";
+            }
+           
+        }
+    </script>
+       
+   
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      
+     
+      <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  -->
+</body>
+</html>

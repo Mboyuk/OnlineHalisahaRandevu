@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halı Saha Randevu Al</title>
+    <link rel="shortcut icon" href="/photo/H.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" >
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"></head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" > -->
+    
+    <link rel="stylesheet" href="/css/halisaha-table.css">
+    <link rel="stylesheet" href="/navbar.css">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg  border-bottom fixed-top" id="ustNavbar">
+    <a style="text-decoration: none; margin-left: 15px; " href="/home"> <img style="margin-top: 0px; " width="150px"  src="/logo/logo11.jpg" alt=""></a>
+     <form  class="aramaForm" action="/halisaha/<%=halisaha.city%>/halisahaArama" method="POST" >
+        <input class=" search " type="search" name="search" placeholder="Halı Saha Arayın." aria-label="Search">
+        <button class="arabtn" type="submit">Ara</button>
+      </form>
+    <!-- <button class="btn btn-warning" id="menu-toggle"><i class="fas fa-bars"></i></button> -->
+    <!-- <button class="btn btn-warning" id="menu-toggle"><i class="fas fa-bars"></i></button> -->
+    
+    <button style="margin-bottom:12px ; margin-top: 10px;"  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><i  style="color: yellow; font-size: 30px; " class="fas fa-bars"></i></span>
+      </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul  class="navbar-nav ml-auto mt- mt-lg-0">
+       
+        <%if(user){%>
+
+        <li>
+          <div class="ml-2  rounded droptas"  id="navbarOturum">
+              <a style="text-align: right;  margin-right: auto; margin-left: auto;" class="nav-link dropdown-toggle userLink arabtn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span><%=user.nickname%> </span> 
+               
+              </a>
+              <div style="text-align: right;" class="dropdown-menu dropdown-menu-right droptas " aria-labelledby="navbarDropdown">
+  
+                        <a class="dropdown-item" href="/auth/edit-profile">Profili Düzenle</a>
+                        
+                        <%if(user.role=="admin"){%>
+                          <a class="dropdown-item" href="/admin/message">Admin Mesaj</a>
+                          <a class="dropdown-item" href="/admin/reklam">Admin Reklam</a>
+                          <a class="dropdown-item" href="/admin">Admin Kontrol</a>
+
+                      <%}else{%>
+
+                          <%if(user.role=="manager"){%>
+                              <a class="dropdown-item" href="/halisaha/<%=user.id%>/edit">Halisahalarım</a>
+                              <a class="dropdown-item" href="/halisaha/register/control">Halisahamı Oluştur</a>
+  
+                          <%}else{%>
+                              <a class="dropdown-item" href="/halisaha/register/req">Halisahamı Al</a>
+  
+                          <%}%>
+                          <a class="dropdown-item" href="/auth/pre-transactions">Geçmiş Maçlar</a>
+                      <%}%>
+                            <hr style="border-top:1px solid white">
+                        <a class="dropdown-item" href="/auth/logout">Oturumu Kapat</a>
+                
+                
+              </div>
+          </div>
+        </li>
+
+
+          <%}else{%>
+            
+                <li  class="nav-item active">
+                    
+                    <a style="margin-right: 15px;" href="/auth/register">
+                        <button  type="button" class="arabtn btn" >Üye Ol</button>
+                    </a>
+                    
+                   
+                </li>
+                <li >
+                    <a href="/auth/login">
+                        <button  type="button" class="arabtn btn">Giriş</button>
+                    </a>
+                </li>
+            
+           
+              <%}%>
+         
+        
+      </ul>
+    </div>
+  </nav>
+
+
+
+
+
+  <div class="pageDiv" style="width: 99%; margin-top: 120px;  ">
+    <div class="ustTable" style="width: 1050px; float: left; margin-left: 10px; height: 1010px; ">
+     
+      <%var date=new Date()%>
+      <%var k=0%>
+      <%var l=0%>
+      <%var bool=true%>
+      <div style="background-color: #008641 ; color: white; width: 82%; margin-left: 70px; border-radius: 5px;"  >
+        <div style="margin-top: 12px;" >
+          <div style="text-align: center;" >
+          
+              <h2 style="text-transform:capitalize"><%=halisaha.name%></h2>
+          </div>
+        </div>
+        <div >
+            <div style="text-align: center;">
+              <label for="">Halı saha puanı: </label>
+              <%for(let i=1; i<=5; i++){%>
+      
+  
+                <%if(avrPoint>=i){%>
+                  <span ><i style="color: #F3E300;" class="fas fa-star"></i></span>
+                <%}%>
+              <%}%>
+            
+            
+              <%=avrPoint%>
+            </div>
+        </div>
+        <div style="margin-top: 15px;" >
+          <span style="margin-left: 10px;"  for="">Halı Sahanın Mesajı: </span>
+            <span style="color: #F3E300;"><%=halisaha.content%></span>
+
+        </div>
+      </div>
+      
+      <div  class="halisaha-table">
+        <table  class=" table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">saat/tarih</th>
+                <th scope="col"><%=date.getDate()+"/"+(date.getMonth()+1)+"/"+(date.getFullYear())%></th>
+                <th scope="col"><%=date.getDate()+1+"/"+(date.getMonth()+1)+"/"+(date.getFullYear())%></th>
+                <th scope="col"><%=date.getDate()+2+"/"+(date.getMonth()+1)+"/"+(date.getFullYear())%></th>
+                <th scope="col"><%=date.getDate()+3+"/"+(date.getMonth()+1)+"/"+(date.getFullYear())%></th>
+                <th scope="col"><%=date.getDate()+4+"/"+(date.getMonth()+1)+"/"+(date.getFullYear())%></th>
+                <th scope="col"><%=date.getDate()+5+"/"+(date.getMonth()+1)+"/"+(date.getFullYear())%></th>
+                <th scope="col"><%=date.getDate()+6+"/"+(date.getMonth()+1)+"/"+(date.getFullYear())%></th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <%if(errors==true){%>
+                <%for(let a=0;a<15; a++ ){%>
+                  <tr >
+                    <%if(a+8<11) {%>
+                      <th ><%="0"+(a+8)+":00-"+"0"+(a+9)+":00"%></th>
+                  <%}else{%> 
+                      <th><%=(a+8)+":00-"+(a+9)+":00"%></th>
+                  <%}%> 
+                  <%for(let b=0;b<7; b++ ){%>
+                    <td style="background-color: red; text-align: center;">     
+                      <span style="color: white;">DOLU</span>                            
+                    </td>
+
+                  <%}%>
+                </tr>
+                <%}%>
+
+             <%}else{%> 
+                <%for(let i=0;i<15; i++ ){%>
+
+                    
+                <tr>
+                    <%if(i+8<=8) {%>
+                        <th><%="0"+(i+8)+":00-"+"0"+(i+9)+":00"%></th>
+                    <%}else{%> 
+                        <th><%=(i+8)+":00-"+(i+9)+":00"%></th>
+                    <%}%>   
+                    
+                    <%for(let j=0;j<7; j++ ){%>
+                        
+                        <%const date=new Date()%>
+                        <%const gun=date.getDate()+j%>
+                        <%const ay=date.getMonth()+1%>
+                        <%let str1=gun+"-"+ay%>
+                        <%const saatDizi= saat[i].split("-")%>
+                        <%const saatKont=saatDizi[0]%>
+                        <%const saatDizi2= saatKont.split(":")%>
+                        <%const saatKontPure=saatDizi2[0]%>
+
+                      
+
+                        <%for(let m=0;m<halisahaRandevu.tarih.length; m++ ) {%>  
+                            <%if((halisahaRandevu.tarih[m]==(str1) && halisahaRandevu.saat[m]==(saat[i]) ) ) {%>  
+                                 
+                                <td style="background-color: red; text-align: center;">     
+                                  <span style="color: white;">DOLU</span>                            
+                                </td>
+
+                               <%bool=false;%> 
+                                <% break; %>
+                            <%}%>
+                        <%}%> 
+                        <%if(bool!=false){%>
+                          <td  > 
+                            <div class="isEmpty" style="width: 100%; height: 30px; " >
+                              <a  href="/halisaha/karaman/<%=halisaha.id%>/<%=halisaha.slug%>/<%=str1%>/<%=saat[i]%>/reservation">
+                                <p style="width: 100% ; height: 100%; margin: 0px;" ><%=halisaha.fiyat%> <i class="fas fa-lira-sign"></i></p>   
+                              </a>
+                            </div>
+                               
+                                                    
+                          </td>
+                        <%}%>     
+                       
+                        <%bool=true%>
+                        
+                    <%}%>    
+                   
+                   
+                </tr>
+              <%}%>    
+             
+            <%}%>  
+            </tbody>
+          </table>
+    
+      </div>
+    
+
+
+    </div>
+    <div class="anaSagDiv"   style=" width: 550px; display: inline-block;  ">
+
+        <div style="height: 1010px;" >
+          <div style="margin-left: 30px;" class="container resimdiv">
+            <div class="row">
+              <div style="height: 300px; " class="row">
+                <div style="width: 300px;  " id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                  <ol class="carousel-indicators">
+                
+                    <%halisaha.image.forEach((element,index)=>{%>
+                      <%if(index==0){%>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                      <%}else{%>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="<%=index%>"></li>
+                      <%}%>
+          
+                    <%})%>
+                  
+    
+                  </ol>
+                  <div class="carousel-inner">
+                    <%halisaha.image.forEach((element,index)=>{%>
+                      <%if(index==0){%>
+                       
+                          <div class="carousel-item active">
+                            <a href="#" class="pop">
+                            <img  width="300px" height="300px"  class="d-block w-100 swipebox" src="/halisahaResimler/<%=element%>" alt="First slide">
+                          </a>
+                          </div>
+                     
+                       
+          
+                      <%}else{%>
+                        
+                          <div class="carousel-item">
+                            <a href="#" class="pop">
+                            <img width="300px" height="300px" class="d-block w-100 swipebox" src="/halisahaResimler/<%=element%>" alt="Second slide">
+                          </a>
+                          </div>
+                       
+                       
+          
+                      <%}%>
+          
+                    <%})%>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+                </div> 
+              </div>
+            </div>
+          </div>
+          <div style=" border-radius: 10px; margin-right: 72px; height: 280px; border: 3px solid #008641; margin-left: 15px;margin-top: 10px; ">
+            <h2 style="margin-left: 10px;">Halı Saha Özellikleri</h2>
+              <%halisahaOzellikleri.forEach(element=>{%>
+                            
+                <%if(halisaha.ozellik.includes(element)){%>
+                    <%const index=halisaha.ozellik.indexOf(element)%>
+                    <div style="float: left; width: 150px;">
+                      <li  style="margin-left: 20px; list-style: none;  margin-right: 20px; margin-top: 20px;">
+                        <i style="color: green;" class="fas fa-check-square"></i>  
+                        <%=halisaha.ozellik[index]%>
+                          
+                      </li>
+                    </div>
+                <%}else{%>
+                    <div style="float: left; width: 150px;">
+                      <li style="margin-left: 20px; list-style: none; margin-right: 20px; margin-top: 20px;">
+                        <i style="color: red;" class="fas fa-window-close"></i>  
+                        <%=element%>
+                          
+                      </li>
+                    </div>
+                <%}%>
+              
+          
+      
+              <%})%>
+          </div>
+          <div style="border-radius: 10px; width: 308px; height: 220px; border: solid 3px #008641 ; float: left; margin-left: 20px; margin-top: 20px;">
+            <h2 style="text-align: center;">Halı Saha Bilgileri</h2>
+            <div style="margin-left: 5px;">
+              <span style="font-weight: bold;"> Adres:</span> <%=halisaha.adress%>
+            </div>
+            <div style="margin-top: 10px; margin-left: 5px;">
+              <span style="font-weight: bold;">Şehir:</span>  <%=halisaha.city%>
+            </div>
+            <div style="margin-top: 10px; margin-left: 5px;">
+              <span style="font-weight: bold;"> Sosyal Medya Hesapları:</span> <%=halisaha.socialMedia%>
+            </div>
+            <div style="margin-top: 10px; margin-left: 5px;">
+              <span style="font-weight: bold;"> Telefon Numarası:</span> <%=halisaha.phoneNumber%>
+            </div>
+
+          </div>
+         
+        </div>
+      
+    </div>
+  </div>
+
+
+
+   <!--yorum kısmı-->
+   <div style="margin-top: 50px;  " class="container">
+    <div  class="container yorumdiv">
+      <%gosterilecekYorum.forEach((element,index)=>{%>
+        <div style="height: 150px; border: 5px solid #008641 ; border-radius: 10px; margin-top: 20px; background-color: white;  " class="row ">
+            <div style="width: 85%;">
+                <p style="font-size: 20px; margin-left: 20px; margin-top: 10px;"><%=element%></p>
+            </div>
+            <div style=" width: 15%; border-left: 5px solid #008641;">
+                <div style="text-align: center; height: 100px;"  class="row">
+                    <img style="width: 50px; height: 50px; margin-top: 5px; margin-left: 70px; border-radius: 50%;" src="/uploads/<%=gosterilecekResim[index]%>" alt="">
+                  
+                </div>
+                <div style="height: 40px; text-align: center; ">
+                  <p style="text-transform: capitalize;"><%=gosterilecekYorumUser[index]%></p> 
+               </div>
+                 
+            </div>
+           
+            
+        </div>
+       
+        <%})%>
+    </div>
+  </div>
+    <%let a=5;%>
+
+    <div style="float: left; margin-left: 10% ;" class="container">
+        <div style="margin-top: 10px; " class="row">
+          <form style="margin-left: auto; margin-right: auto;" action="erkut-hali-saha" method="GET" >
+           
+            <button onclick="clickMin()"  id="geriBtn" class="geri yonBtn" type="submit"name="page" value="1" ><i class="fas fa-arrow-left"></i></button>
+            <span style="margin-left: 5px; margin-right: 5px; font-size: large; font-weight: 700;" class="border;"><%=page%></span>
+            <button onclick="clickPlus()" id="ileriBtn" class="ileri yonBtn" type="submit"name="page" value="1" > <i class="fas fa-arrow-right"></i></button>
+            
+          </form>
+        </div>
+    </div>
+   
+   
+ 
+ 
+  <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" data-dismiss="modal">
+      <div class="modal-content"  >              
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <img src="" class="imagepreview" style="width: 100%;" >
+        </div> 
+        
+
+      </div>
+    </div>
+  </div>
+
+  <footer style="background-color: green; color: white; margin-top: 800px;" class="page-footer font-small  pt-4">
+
+   
+    <!-- Copyright -->
+    <div style=" float: left; margin-left: 200px;" class="container">© 2021
+ 
+      <a style="text-decoration: none;" href="/home">Meik Yazılım</a>
+    </div>
+    <div style="padding-bottom: 40px; ">
+       
+    </div>
+    <!-- Copyright -->
+  
+  </footer> 
+    
+    
+
+    <script>
+        const b=<%- maxPage%>;
+        localStorage.maxPage=b;
+
+          function clickPlus() {
+            if(typeof(Storage) !== "undefined") {
+              if (localStorage.clickcount) {
+                if(localStorage.maxPage>localStorage.clickcount){
+                  localStorage.clickcount = Number(localStorage.clickcount)+1;
+                  document.getElementById("ileriBtn").value= localStorage.getItem("clickcount");
+                }else{
+                  document.getElementById("ileriBtn").value= localStorage.getItem("clickcount");
+                }
+              
+              } else {
+                localStorage.clickcount = 1;
+                localStorage.getItem("clickcount");
+              }
+            } 
+          }
+      
+          function clickMin() {
+            if(typeof(Storage) !== "undefined") {
+              if (localStorage.clickcount) {
+                if(localStorage.clickcount>1){
+                  localStorage.clickcount = Number(localStorage.clickcount)-1;
+                  document.getElementById("geriBtn").value= localStorage.getItem("clickcount");
+                }
+              
+              } else {
+                localStorage.clickcount = 1;
+              }
+            } 
+          }
+      
+    </script>
+
+    
+    <!-- <script>
+        const del = document.querySelectorAll('button.del')
+        const delLinks=[].slice.call(del);
+        const label1=document.getElementById("lab1")
+        const lab=document.getElementById("lab");
+       
+        delLinks.forEach((item,i)=>{
+          
+          item.addEventListener('click', (e) =>{
+            //const endpoint=`/yonetici/delete/`
+            const name1=item.dataset.name1;
+            const index1=item.dataset.index1;
+            const nameindex=name1+"_"+index1;
+            label1.value=nameindex   
+            lab.value=nameindex       
+            console.log(name1+" "+index1);
+            const endpoint=`http://localhost:5000/halisaha/karaman/60bfa99f7239a73d8084d89f/ali-hali-saha/${nameindex}`
+            console.log(endpoint);
+            fetch(endpoint,{
+                method:"POST"
+                })
+                .then()
+                .catch((err)=>{
+                 console.log(err);
+                })
+    
+          })
+    
+        });
+       
+    
+    
+    
+      </script> -->
+
+<!-- fetch(endpoint,{
+    method:"DELETE"
+  })
+  .then()
+  .catch((err)=>{
+    console.log(err);
+  }) -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      
+  <script>
+        $(function() {
+            $('.pop').on('click', function() {
+                $('.imagepreview').attr('src', $(this).find('img').attr('src'));
+                $('#imagemodal').modal('show');   
+            });     
+    });
+  </script>
+     
+
+     
+</body>
+</html>

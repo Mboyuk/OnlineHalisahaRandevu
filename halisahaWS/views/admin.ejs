@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="shortcut icon" href="/photo/H.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" >
+    <link rel="stylesheet" href="/css/pre-transactions.css">
+    <link rel="stylesheet" href="/navbar.css">
+</head>
+<body>
+
+    <%- include('inc/adminNavbar'); %>
+   
+    <div style="margin-top: 120px; height: 400px; overflow:auto; " class="container">
+      <h2 style="text-align: center;">Tüm Kullanıcılar</h2>
+        <table  class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">İsim</th>
+              <th scope="col">Soyisim</th>
+              <th scope="col">Kullanıcı Adı</th>
+              <th scope="col">Email</th>
+              <th scope="col">Role</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+              <%for(let i=0;i<users.length; i++){%>
+            <tr>
+              <th scope="row"><%=i+1%></th>
+              <td><%=users[i].name%></td>
+              <td><%=users[i].surname%></td>
+              <td><%=users[i].nickname%></td>
+              <td><%=users[i].email%></td>
+              <td><%=users[i].role%></td>
+              <td><%=users[i].status%></td>
+                       </tr>
+            <%}%>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top: 30px; height: 400px; overflow:auto; " class="container">
+        <h2 style="text-align: center;">Tüm Halı Sahalar</h2>
+        <table  class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">İsim</th>
+              <th scope="col">Şehir</th>
+              <th scope="col">Puan</th>
+              <th style="width: 20px;" scope="col">Yorum Sayısı</th>
+              <th scope="col">Fiyat</th>
+              <th scope="col">Özellikler</th>
+            </tr>
+          </thead>
+          <tbody>
+              <%for(let i=0;i<halisaha.length; i++){%>
+            <tr>
+              <th scope="row"><%=i+1%></th>
+              <td><%=halisaha[i].name%></td>
+              <td><%=halisaha[i].city%></td>
+              <td><%=halisaha[i].avgPoint.toFixed(2)%></td>
+              <td><%=halisaha[i].commentLength%></td>
+              <td><%=halisaha[i].fiyat%></td>
+              <td><%=halisaha[i].ozellik%></td>
+                       </tr>
+            <%}%>
+          </tbody>
+        </table>
+      </div>
+
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halı Sah Ödeme </title>
+    <link rel="shortcut icon" href="/photo/H.png" type="image/x-icon" />
+
+   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" >
+
+    <link rel="stylesheet" href="/navbar.css">
+    <link rel="stylesheet" href="/css/reglogres.css">
+</head>
+<body>
+  
+ 
+  
+  <%- include('inc/navbar'); %>
+
+        <div style="width: 100%; margin-top: 120px;" class="row">
+          <div class="col-md-6 m-auto">
+            
+
+            <div class="card card-body myborder">
+              <h1 class="text-center mb-3">
+                <i style="color: rgb(66, 66, 240);" class="fas fa-user-plus"></i> Kayıt Ol
+              </h1>
+              <%- include('partials/messages'); %>
+                
+              <form action="control" method="POST">
+                <div class="form-group">
+                  <label for="name">Halı Saha İsmi</label>
+                  <input
+                    type="name"
+                    id="name"
+                    name="name"
+                    class="form-control"
+                    placeholder="İsim Giriniz"
+                    value="<%= typeof name != 'undefined' ? name : '' %>"
+                  />
+                </div>
+                <div class="form-group">
+                    <label for="name">Halı saha mesajı</label>
+                    <input
+                      type="name"
+                      id="content"
+                      name="content"
+                      class="form-control"
+                      placeholder="Yayınlamak İstediğiniz Mesajı Giriniz"
+                      value="<%= typeof name != 'undefined' ? name : '' %>"
+                    />
+                </div>
+                <div class="form-group">
+                  <label for="name">Şehir Seçiniz:</label>
+                  <select name="city" id="">
+                      <label for="name">Şehir</label>
+                      <option value="adana">Adana</option>
+                      <option value="adıyaman">Adıyaman</option>
+                      <option value="afyonkarahisar">Afyonkarahisar</option>
+                      <option value="ağrı">Ağrı</option>
+                      <option value="amasya">Amasya</option>
+                      <option value="ankara">Ankara</option>
+                      <option value="antalya">Antalya</option>
+                      <option value="artvin">Artvin</option>
+                      <option value="aydın">Aydın</option>
+                      <option value="balıkesir">Balıkesir</option>
+                      <option value="bilecik">Bilecik</option>
+                      <option value="bingöl">Bingöl</option>
+                      <option value="bitlis">Bitlis</option>
+                      <option value="bolu">Bolu</option>
+                      <option value="burdur">Burdur</option>
+                      <option value="bursa">Bursa</option>
+                      <option value="çanakkale">Çanakkale</option>
+                      <option value="çankırı">Çankırı</option>
+                      <option value="çorum">Çorum</option>
+                      <option value="denizli">Denizli</option>
+                      <option value="diyarbakır">Diyarbakır</option>
+                      <option value="edirne">Edirne</option>
+                      <option value="elazığ">Elazığ</option>
+                      <option value="erzincan">Erzincan</option>
+                      <option value="erzurum">Erzurum</option>
+                      <option value="eskişehir">Eskişehir</option>
+                      <option value="gaziantep">Gaziantep</option>
+                      <option value="giresun">Giresun</option>
+                      <option value="gümüşhane">Gümüşhane</option>
+                      <option value="hakkâri">Hakkâri</option>
+                      <option value="hatay">Hatay</option>
+                      <option value="ısparta">Isparta</option>
+                      <option value="mersin">Mersin</option>
+                      <option value="istanbul">İstanbul</option>
+                      <option value="izmir">İzmir</option>
+                      <option value="kars">Kars</option>
+                      <option value="kastamonu">Kastamonu</option>
+                      <option value="kayseri">Kayseri</option>
+                      <option value="kırklareli">Kırklareli</option>
+                      <option value="kırşehir">Kırşehir</option>
+                      <option value="kocaeli">Kocaeli</option>
+                      <option value="konya">Konya</option>
+                      <option value="kütahya">Kütahya</option>
+                      <option value="malatya">Malatya</option>
+                      <option value="manisa">Manisa</option>
+                      <option value="kahramanmaraş">Kahramanmaraş</option>
+                      <option value="mardin">Mardin</option>
+                      <option value="muğla">Muğla</option>
+                      <option value="muş">Muş</option>
+                      <option value="nevşehir">Nevşehir</option>
+                      <option value="niğde">Niğde</option>
+                      <option value="ordu">Ordu</option>
+                      <option value="rize">Rize</option>
+                      <option value="sakarya">Sakarya</option>
+                      <option value="samsun">Samsun</option>
+                      <option value="siirt">Siirt</option>
+                      <option value="sinop">Sinop</option>
+                      <option value="sivas">Sivas</option>
+                      <option value="tekirdağ">Tekirdağ</option>
+                      <option value="tokat">Tokat</option>
+                      <option value="trabzon">Trabzon</option>
+                      <option value="tunceli">Tunceli</option>
+                      <option value="şanlıurfa">Şanlıurfa</option>
+                      <option value="uşak">Uşak</option>
+                      <option value="van">Van</option>
+                      <option value="yozgat">Yozgat</option>
+                      <option value="zonguldak">Zonguldak</option>
+                      <option value="aksaray">Aksaray</option>
+                      <option value="bayburt">Bayburt</option>
+                      <option value="karaman">Karaman</option>
+                      <option value="kırıkkale">Kırıkkale</option>
+                      <option value="batman">Batman</option>
+                      <option value="şırnak">Şırnak</option>
+                      <option value="bartın">Bartın</option>
+                      <option value="ardahan">Ardahan</option>
+                      <option value="ığdır">Iğdır</option>
+                      <option value="yalova">Yalova</option>
+                      <option value="karabük">Karabük</option>
+                      <option value="kilis">Kilis</option>
+                      <option value="osmaniye">Osmaniye</option>
+                      <option value="düzce">Düzce</option>
+
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="name">Adres Giriniz</label>
+                <input
+                  type="name"
+                  id="adress"
+                  name="adress"
+                  class="form-control"
+                  placeholder="Adresinizi Giriniz"
+                  value="<%= typeof name != 'undefined' ? name : '' %>"
+                />
+            </div>
+            <div class="form-group">
+              <label for="name">Sosyal Medya</label>
+              <input
+                type="name"
+                id="socialMedia"
+                name="socialMedia"
+                class="form-control"
+                placeholder="Sosyal Medyanızı Giriniz"
+                value="<%= typeof name != 'undefined' ? name : '' %>"
+              />
+          </div>
+          <div class="form-group">
+            <label for="name">Telefon no</label>
+            <input
+              type="name"
+              id="phoneNumber"
+              name="phoneNumber"
+              class="form-control"
+              placeholder="content Giriniz"
+             
+              value="<%= typeof name != 'undefined' ? name : '' %>"
+            />
+        </div>
+        <div class="form-group">
+          <label for="name">Fiyat Bilgisi</label>
+          <input
+            type="number"
+            id="fiyat"
+            name="fiyat"
+            class="form-control"
+            placeholder="Fiyat Giriniz"
+           
+            value="<%= typeof name != 'undefined' ? name : '' %>"
+          />
+        </div>
+              
+                
+                
+                  <button type="submit" class="arabtn btn-block">
+                    Kayıt Ol
+                  </button>
+                
+                
+              </form>
+            
+            </div>
+          </div>
+        </div>
+        
+      
+
+       
+     
+
+      
+    <!-- /#page-content-wrapper -->
+
+  </div>
+ 
+
+  
+
+    <!-- <form action="kayit" method="POST">
+        <div class="container">
+            <div class="form-group">
+                <label >name</label>
+                <input type="text" name="name" class="form-control" id="exampletext" aria-describedby="emailHelp" placeholder="Enter name">
+               
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              
+              <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+        </div>  
+    </form> -->
+      
+       
+       
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <script>
+        $("#menu-toggle").click(function(e) {
+          e.preventDefault();
+          $("#wrapper").toggleClass("toggled");
+        });
+      </script>
+    
+
+</body>
+</html>

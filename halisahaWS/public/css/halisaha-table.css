@@ -1,0 +1,170 @@
+body{
+    background-color: #DDDDDC;
+}
+
+
+.halisaha-table{
+    margin-top: 30px;
+    margin-left: 70px;
+   float: left;
+}
+tbody tr th{
+    background-color: #008641;
+    color: white;
+    font-size: 19px;
+    font-weight: 600;
+    
+   
+}
+tbody tr {
+   text-align: center;
+   
+   
+}
+tbody tr td {
+    background-color: #F3E300 ;
+    
+  
+}
+
+table tr td{
+    border:1px solid white !important;
+}
+table tr th{
+    border:1px solid white !important;
+}
+
+tbody tr td:hover {
+    background-color:#008641 ;
+    border-radius: 3px;
+    color: white;
+}
+td a p{
+   color: black;
+}
+.isEmpty p:hover {
+
+    color: white;
+    
+}
+a:link{
+    text-decoration: none;
+}
+thead tr th{
+    background-color:#008641 ;
+    color: white;
+}
+
+.yorumdiv{
+    float: left;
+   
+}
+.yonBtn{
+    background-color:#008641 ;
+    color: white;
+    border-radius: 5px;
+}
+.yonBtn:hover{
+    background-color:#F3E300  ;
+    color: black;
+    border-radius: 5px;
+}
+
+
+
+@media screen and (min-width:1px) and (max-width:767px) {
+
+    .ustTable{
+        margin-left: 10% !important;
+       
+        
+        
+    }
+    .anaSagDiv{
+        margin-left: 20% !important;
+        margin-top: 50px;
+       
+        
+    }
+    .halisahOzellikEkle{
+        width: 500px !important;
+    }
+   
+    
+   
+    
+    
+    
+}
+@media screen and (min-width:768px) and (max-width:991px) {
+
+   
+   
+    .ustTable{
+        margin-left: 10% !important;
+       
+        
+        
+    }
+    .anaSagDiv{
+        margin-left: 20% !important;
+        margin-top: 50px;
+       
+        
+    }
+    .halisahOzellikEkle{
+        width: 500px !important;
+        margin-left: 200px !important;
+    }
+   
+    
+    
+    
+}
+
+@media screen and (min-width:900px) and (max-width:1199px) {
+
+   
+    .ustTable{
+        margin-left: 10% !important;
+       
+        
+        
+    }
+    .anaSagDiv{
+        margin-left: 20% !important;
+        margin-top: 50px;
+       
+        
+    }
+    .halisahOzellikEkle{
+        width: 500px !important;
+    }
+
+    
+    
+    
+}
+
+@media screen and (min-width:1200px) {
+
+   
+    .ustTable{
+        /* padding-left: 100px; */
+        width: 1000px;
+        
+        
+       
+    }
+    .anaSagDiv{
+        width: 400px !important;
+        
+        
+        
+    }
+  
+
+    
+    
+    
+}

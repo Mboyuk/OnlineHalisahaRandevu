@@ -1,0 +1,147 @@
+
+
+ <nav class="navbar navbar-expand-lg  border-bottom fixed-top" id="ustNavbar">
+    <!-- <a style="text-decoration: none; margin-left: 15px; " href="/home">  <i style="font-size: 30px; color: black;" class="fas fa-futbol"></i></a> -->
+    <a href="/home"> <img style="margin-top: 0px; " width="150px"  src="/logo/logo11.jpg" alt="">
+    </a>
+        <!-- <button class="btn btn-warning" id="menu-toggle"><i class="fas fa-bars"></i></button> -->
+    <!-- <button class="btn btn-warning" id="menu-toggle"><i class="fas fa-bars"></i></button> -->
+    
+    <button style="margin-bottom:12px ; margin-top: 10px;"  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><i  style="color: yellow; font-size: 30px; " class="fas fa-bars"></i></span>
+      </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul  class="navbar-nav ml-auto mt- mt-lg-0">
+       
+        <%if(user){%>
+
+        <li>
+          <div class="ml-2  rounded droptas"  id="navbarOturum">
+              <a style="text-align: right;  margin-right: auto; margin-left: auto;" class="nav-link dropdown-toggle userLink arabtn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span><%=user.nickname%> </span> 
+               
+              </a>
+              <div style="text-align: right;" class="dropdown-menu dropdown-menu-right droptas " aria-labelledby="navbarDropdown">
+  
+                        <a class="dropdown-item" href="/auth/edit-profile">Profili Düzenle</a>
+                       
+                        <%if(user.role=="admin"){%>
+                            <a class="dropdown-item" href="/admin/message">Admin Mesaj</a>
+                            <a class="dropdown-item" href="/admin/reklam">Admin Reklam</a>
+                            <a class="dropdown-item" href="/admin">Admin Kontrol</a>
+
+                        <%}else{%>
+
+                            <%if(user.role=="manager"){%>
+                                <a class="dropdown-item" href="/halisaha/<%=user.id%>/edit">Halisahalarım</a>
+                                <a class="dropdown-item" href="/halisaha/register/control">Halisahamı Oluştur</a>
+    
+                            <%}else{%>
+                                <a class="dropdown-item" href="/halisaha/register/req">Halisahamı Al</a>
+    
+                            <%}%>
+                            <a class="dropdown-item" href="/auth/pre-transactions">Geçmiş Maçlar</a>
+                        <%}%>
+                        
+                        <!-- <a class="dropdown-item" href="/live/live-videos">Canli Maç</a> -->
+                       
+                            <hr style="border-top:1px solid white">
+                        <a class="dropdown-item" href="/auth/logout">Oturumu Kapat</a>
+                
+                
+              </div>
+          </div>
+        </li>
+
+
+          <%}else{%>
+            
+                <li  class="nav-item active">
+                    
+                    <a style="margin-right: 15px;" href="/auth/register">
+                        <button  type="button" class="arabtn btn" >Üye Ol</button>
+                    </a>
+                    
+                   
+                </li>
+                <li >
+                    <a href="/auth/login">
+                        <button  type="button" class="arabtn btn">Giriş</button>
+                    </a>
+                </li>
+            
+           
+              <%}%>
+         
+        
+      </ul>
+    </div>
+  </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--   
+  
+  <nav class="navbar1 navbar navbar-light justify-content-between fixed-top">
+        <a style="text-decoration: none; margin-left: 15px; " href="/home">  <i style="font-size: 30px; color: black;" class="fas fa-futbol"></i></a>
+        <form style=" " class="form-inline">
+          <input style=" margin-right: auto; width: 40%; float: left;" class=" search mr-sm-2" type="search" placeholder="Halı Saha Arayın." aria-label="Search">
+          <button class="arabtn" type="submit">Ara</button>
+        </form>
+        <div style="" class="">
+            <%if(user){%>
+            
+               
+                <div  class="btn-group">
+                    <button style="text-align: right;"  type="button" class="arabtn btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <%=user.name%>
+                    </button>
+                    <div  class="droptas dropdown-menu">
+                        <a  class="dropdown-item" href="/auth/edit-profile">Profili Düzenle</a>
+                        <%if(user.role=="manager"){%>
+                            <a class="dropdown-item" href="/halisaha/<%=user.id%>/edit">halisahalarım</a>
+                            <a class="dropdown-item" href="/halisaha/register/control">Halisahamı oluştur</a>
+
+                        <%}else{%>
+                            <a class="dropdown-item" href="/halisaha/register/req">Halisahamı Al</a>
+
+                        <%}%>
+                        <a class="dropdown-item" href="/live/live-videos">Canli Maç</a>
+                        <hr style="border-top: 1px solid white;">
+                        <a class="dropdown-item" href="/auth/logout">Oturumu Kapat</a>
+                    </div>
+                </div>
+            
+            <%}else{%>
+                <div style="margin-right: 10px;" class="">
+                    <a style="margin-right: 15px;" href="/auth/register">
+                        <button  type="button" class="arabtn btn" >Üye Ol</button>
+                    </a>
+                    <a href="/auth/login">
+                        <button  type="button" class="arabtn btn">Giriş</button>
+                    </a>
+
+                </div>
+
+            <%}%>
+            
+        </div>
+
+      </nav> -->

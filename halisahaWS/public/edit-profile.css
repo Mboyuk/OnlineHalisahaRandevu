@@ -1,0 +1,150 @@
+body{
+    background-color: #DDDDDC !important;
+}
+
+.border-green{
+    border: 5px solid #28a745;
+    border-radius: 10px;
+}
+a:link{
+    text-decoration: none;
+}
+
+.arabtn{
+    border: 1px solid #28a745;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    padding: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.arabtn:hover{
+    background-color: #F3E300;
+    color: black;
+
+}
+
+@media screen and (min-width:1px) and (max-width:480px) {
+
+    .ana-div{
+        height: 950px;
+        width: 380px !important;
+    }
+    .sol-div{
+        width: 300px !important;
+        margin-left: 20px;
+        margin-right: auto;
+        border: none !important;
+    }
+    .sag-div{
+        width: 300px;
+        margin-left: 20px;
+        margin-right: auto;
+        margin-top: 50px;
+    }
+    .sag-content-icerik{
+        width: 250px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hr-style{
+      
+        border-top:3px solid #28a745;
+        
+
+    }
+    
+    
+    
+    
+}
+
+@media screen and (min-width:481px) and (max-width:767px) {
+
+    .ana-div{
+        height: 950px;
+    }
+    .sol-div{
+        margin-left: 100px;
+        margin-right: auto;
+        border: none !important;
+    }
+    .sag-div{
+        width: 300px;
+        margin-left: 100px;
+        margin-right: auto;
+        margin-top: 50px;
+      
+    }
+    .sag-content-icerik{
+        width: 250px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hr-style{
+      
+        border-top:3px solid #28a745;
+        
+
+    }
+    
+    
+    
+    
+}
+@media screen and (min-width:768px) and (max-width:991px) {
+    .ana-div{
+        height: 450px;
+    }
+   
+    .sag-div{
+        width: 360px;
+    }
+    .sag-content-icerik{
+        width: 290px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+   
+    
+    
+    
+}
+
+@media screen and (min-width:992px) and (max-width:1199px) {
+    .ana-div{
+        height: 450px;
+    }
+
+    .sag-div{
+        width: 585px;
+    }
+    .sag-content-icerik{
+        width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+  
+    
+    
+}
+
+@media screen and (min-width:1200px) {
+    .ana-div{
+        height: 450px;
+    }
+    .sag-div{
+        width: 785px;
+    }
+    .sag-content-icerik{
+        width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    
+    
+}

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halı Saha Arama</title>
+    <link rel="shortcut icon" href="/photo/H.png" type="image/x-icon" />
+    
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"></head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" > -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" >
+    <link rel="stylesheet" href="/css/halisahasayfasi.css">
+    <link rel="stylesheet" href="/navbar.css">
+  
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg  border-bottom fixed-top" id="ustNavbar">
+        <a style="text-decoration: none; margin-left: 15px; " href="/home">  <img style="margin-top: 0px; " width="150px"  src="/logo/logo11.jpg" alt=""></a>
+         <form  class="aramaForm" action="halisahaArama" method="POST" >
+            <input class=" search " type="search" name="search" placeholder="Halı Saha Arayın." aria-label="Search">
+            <button class="arabtn" type="submit">Ara</button>
+          </form>
+        <!-- <button class="btn btn-warning" id="menu-toggle"><i class="fas fa-bars"></i></button> -->
+        <!-- <button class="btn btn-warning" id="menu-toggle"><i class="fas fa-bars"></i></button> -->
+        
+        <button style="margin-bottom:12px ; margin-top: 10px;"  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i  style="color: yellow; font-size: 30px; " class="fas fa-bars"></i></span>
+          </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul  class="navbar-nav ml-auto mt- mt-lg-0">
+           
+            <%if(user){%>
+    
+            <li>
+              <div class="ml-2  rounded droptas"  id="navbarOturum">
+                  <a style="text-align: right;  margin-right: auto; margin-left: auto;" class="nav-link dropdown-toggle userLink arabtn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span><%=user.nickname%> </span> 
+                   
+                  </a>
+                  <div style="text-align: right;" class="dropdown-menu dropdown-menu-right droptas " aria-labelledby="navbarDropdown">
+      
+                            <a class="dropdown-item" href="/auth/edit-profile">Profili Düzenle</a>
+                           
+                        <%if(user.role=="admin"){%>
+                            <a class="dropdown-item" href="/admin/message">Admin Mesaj</a>
+                            <a class="dropdown-item" href="/admin/reklam">Admin Reklam</a>
+                            <a class="dropdown-item" href="/admin">Admin Kontrol</a>
+
+                        <%}else{%>
+
+                            <%if(user.role=="manager"){%>
+                                <a class="dropdown-item" href="/halisaha/<%=user.id%>/edit">Halisahalarım</a>
+                                <a class="dropdown-item" href="/halisaha/register/control">Halisahamı Oluştur</a>
+    
+                            <%}else{%>
+                                <a class="dropdown-item" href="/halisaha/register/req">Halisahamı Al</a>
+    
+                            <%}%>
+                            <a class="dropdown-item" href="/auth/pre-transactions">Geçmiş Maçlar</a>
+                        <%}%>
+                                <hr style="border-top:1px solid white">
+                            <a class="dropdown-item" href="/auth/logout">Oturumu Kapat</a>
+                    
+                    
+                  </div>
+              </div>
+            </li>
+    
+    
+              <%}else{%>
+                
+                    <li  class="nav-item active">
+                        
+                        <a style="margin-right: 15px;" href="/auth/register">
+                            <button  type="button" class="arabtn btn" >Üye Ol</button>
+                        </a>
+                        
+                       
+                    </li>
+                    <li >
+                        <a href="/auth/login">
+                            <button  type="button" class="arabtn btn">Giriş</button>
+                        </a>
+                    </li>
+                
+               
+                  <%}%>
+             
+            
+          </ul>
+        </div>
+      </nav>
+    
+    
+    
+    <div style="margin-top: 120px;" class="container">
+        
+        <div style="margin-top: 100px;" class="row">
+            <div style="text-align: right;" class="col-12">
+
+                <form  action="halisahaArama" method="GET">
+                  
+                </form>
+            </div>   
+        </div>
+        
+        <div  class="row">
+                    <div  >
+                        <div class="form">
+                            <form  action="halisahaArama" method="GET">
+                                <div  class="siralamaDiv">
+                                    <div  class="dropdown">
+                                        <button style="width: 100%;" class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Sıralama
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <div>
+                                                <input style="width: 200px; " class="siralama" type="submit" name="siralama" value="Azalan puan" ><br>
+                                            </div>
+                                            <div>
+                                            <input style="width: 100%;"  class="siralama" type="submit" name="siralama" value="Artan puan"> <br>
+                                            </div>
+                                            <div>
+                                                <input style="width: 100%;"  class="siralama" type="submit" name="siralama" value="Artan yorum"> <br>
+                                            </div>
+                                            <div>
+                                                <input style="width: 100%;"  class="siralama" type="submit" name="siralama" value="Azalan yorum"> <br>
+                                            </div>
+                                            <div>
+                                                <input style="width: 100%;"  class="siralama" type="submit" name="siralama" value="Azalan fiyat"> <br>
+                                            </div>
+                                            <div>
+                                                <input style="width: 100%;"  class="siralama" type="submit" name="siralama" value="Artan fiyat"> <br>
+                                            </div>
+                                        </div>
+                                    </div>    
+                                </div>
+                                <div style="margin-top: 20px;" class="filtre">
+                                    <div style=" text-align: center; font-weight: bold ; background-color: #28a745; color: #FFFFFF; border-top-left-radius: 10px; border-top-right-radius: 10px;">Halı saha filtreleri</div>    
+                                    <div style="text-align: left;  ">
+                                        <input style="margin-left: 5px; " class="largeCheckbox" type="checkbox" name="ozellik" value="Dus">   <label for="">Duş</label> 
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" name="ozellik"class="largeCheckbox" value="Ayakkabi" >    <label for="">Ayakkabı</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" name="ozellik"class="largeCheckbox"  value="Bufe">  <label for="">Büfe</label> 
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" name="ozellik"class="largeCheckbox" value="Eldiven"> <label for="">Eldiven</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" name="ozellik"class="largeCheckbox" value="Kafetarya">   <label for="">Kafetarya</label> 
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" name="ozellik"class="largeCheckbox" value="Otopark">   <label for="">Otopark</label> 
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" name="ozellik" class="largeCheckbox" value="Wifi">  <label for="">WIFI</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" name="ozellik" class="largeCheckbox" value="Servis">  <label for="">Servis</label> 
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" name="ozellik" class="largeCheckbox" value="Acik-saha">   <label for="">Açık Saha</label> 
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" name="ozellik" class="largeCheckbox" value="Kapali-saha">  <label for="">Kapalı Saha</label> 
+                                    </div>
+                                </div>
+                                <input style="width: 100%;" type="submit" class="filitreArama" value="Ara">
+ 
+                            </form>
+                        </div>
+                    </div>  
+                    <div style="position: relative; "  >
+                        
+                            
+                        <table style="width: 1000px; margin-left: 220px;" class="tablo" >
+                                <thead>
+                                    <tr >
+                                        <th style="color:white;">Halı Sahalar</th>
+                                        <th style="color: white;">Puan</th>
+                                        <th style="color: white;">Yorum Sayısı</th>
+                                        <th style="color: white;">Fiyat</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for(var i=0; i<halisaha.length; i++) {%>
+                                        <tr>
+                                            <td>
+                                                <a href="/halisaha/<%=halisaha[i].city%>/<%=halisaha[i].id%>/<%=halisaha[i].slug%>">
+                                                        <%= halisaha[i].name%>
+                                                </a>
+                                            
+                                            </td>
+                                            <td>
+                                                
+                                                <%for(let j=1; j<=5; j++){%>
+            
+
+                                                    <%if(halisaha[i].avgPoint>=j){%>
+                                                    <span ><i style="color: red;" class="fas fa-star"></i></span>
+                                                    <%}%>
+
+                                                <%}%>
+                                                <%=halisaha[i].avgPoint.toFixed(2)%>
+                                            </td>
+                                            <td>
+                                                <i class="far fa-comments"></i>
+                                                    <%=halisaha[i].commentLength%>
+                                            </td>
+                                            <td>
+                                                <i class="fas fa-lira-sign"></i>
+                                                    <%=halisaha[i].fiyat%>
+                                            </td>
+                                        </tr>
+                                    <% } %>
+                                </tbody>
+                        </table>
+                        <h4 style="margin-left: 220px;"><%=errors %></h4>
+                        
+                    </div>
+                   
+        </div>
+    </div>
+   
+
+
+   
+
+    <script>
+        const siralama=document.querySelectorAll(".siralama")
+        const siralamalar=[].slice.call(siralama);
+        const checkboxs = document.querySelectorAll('.largeCheckbox')
+        siralamalar.forEach((item,i)=>{
+
+            item.addEventListener("click",(e)=>{
+                console.log(item)
+               // item.value=item.value+"&amp;"+localStorage.getItem("arraylocal");
+                // item.value="Azalan+&amp+puan"//+"&"+"ozellik"+"="+"eldiven"+"&"+"ozellik"+"="+"dus"
+                console.log(item.value)
+                //e.preventDefault()
+            })
+        })
+        console.log(siralama)
+        console.log(checkboxs)
+        const chc=[].slice.call(checkboxs);
+        const filitreArama=document.querySelector(".filitreArama")
+        var pureArray=[];
+        var arrayget=[]
+        console.log(filitreArama)
+        filitreArama.addEventListener("click",(e)=>{
+           
+            console.log("aramaaaaaaaaaa")
+            for(let i=0;i<=arrayget.length-1;i++){
+                var bool=false;
+                for(let j=i+1;j<=arrayget.length;j++){
+                    if(arrayget[i]==arrayget[j]){
+                        arrayget.splice(j,1);
+                        bool=true;
+                        break;
+                    }
+                }
+                if(bool==false){
+                    pureArray.push(arrayget[i]);
+                }
+            }
+            if(localStorage.arrayPure){
+                var str3="ozellik="
+                var str4="";
+                var arr3=localStorage.getItem("arrayPure");
+                var arr4=arr3.split("_");
+                var bbbb=false;
+                pureArray.forEach((element,index)=>{
+                 
+                    console.log(arr4)
+                    console.log(arr4)
+                    var kabam=""
+                    if(arr4.includes(element)){
+                        bbbb=true;
+                        arr4.splice(arr4.indexOf(element),1);
+                        arr4.forEach((element33,index33)=>{
+                            if(index33==arr4.length-1){
+                                kabam=kabam+element33
+                            }else{
+                                kabam=kabam+element33+"_";
+                            }
+                            
+                           
+                        })
+                        localStorage.arrayPure=kabam;
+
+                        const a=localStorage.getItem("arraylocal");
+                        const b=a.split("&");
+
+                        var abram="";
+                       
+                        var c=[];
+                        b.forEach((element2,index)=>{
+                            const d=element2.split("=")[1];
+                            if(d==element){
+
+                            }else{
+                                if(index==0){
+                                    abram=abram+element2;
+                                }else{
+                                    abram=abram+"&"+element2;
+                                
+                                }
+                               
+                            }
+                           
+                        })
+                        console.log("------------------------------------------------------------------------")
+                        localStorage.arraylocal=abram;
+                        console.log(b);
+                        console.log(c);
+                        console.log(abram)
+                        pureArray=[];
+ 
+                    }
+    
+                    else{
+                        if(index==pureArray.length-1){
+                            str3=str3+element;
+                            str4=str4+element
+                        }
+                        else{
+                            str3=str3+element+"&ozellik="
+                            str4=str4+element+"_";
+                        }
+                        
+                    }
+                    
+                
+                    
+                })
+                if(bbbb==false){
+                    localStorage.arraylocal=localStorage.getItem("arraylocal")+"&"+str3;
+                    localStorage.arrayPure=localStorage.getItem("arrayPure")+"_"+str4;
+                }
+                
+               
+
+
+            }else{
+                var str="ozellik="
+                var str2="";
+                pureArray.forEach((element,index)=>{
+                    if(index==pureArray.length-1){
+                        str=str+element;
+                        str2=str2+element
+                    }else{
+                        str=str+element+"&ozellik="
+                        str2=str2+element+"_";
+                    }
+                
+                    
+                })
+                console.log(pureArray)
+                localStorage.arraylocal=str;
+                localStorage.arrayPure=str2;
+            }
+           
+            
+        })
+
+       
+        
+      
+        chc.forEach((item,i)=>{
+            if(localStorage.arrayPure){
+                var arr=localStorage.getItem("arrayPure");
+                var arr2=arr.split("_");
+                console.log(arr2)
+                if(arr2.includes(item.value)){
+                    item.checked=true;
+                }
+          
+            }
+           
+           
+          item.addEventListener('click', (e) =>{
+              arrayget.push(item.value)
+              console.log(item.value)
+              console.log(arrayget)
+            //const endpoint=`/yonetici/delete/`
+          })
+        });
+        
+    </script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

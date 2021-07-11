@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Düzenle</title>
+    <link rel="shortcut icon" href="/photo/H.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/edit-profile.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" >
+    <link rel="stylesheet" href="/navbar.css">
+
+</head>
+<body>
+  
+    <%- include('inc/navbar'); %>
+
+  <div style="margin-top: 120px;  " class="container border-green ana-div">
+
+    <div style="width: 300px; border-right: 5px solid #28a745;  float: left; height: 445px;" class="sol-div">
+      <div style="text-align: center;" class="">
+
+        <div style="margin-left:50px; " class="">  
+            <div style="width: 200px; height: 200px;  margin-top: 10px;  ">
+                <img style="border-radius: 50%;" width="200px" height="200px" src="/uploads/<%=user.profile_image%>" alt="">
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 10px; " class="user-name">
+          <p><%=user.name%> <%=user.surname%>  </p>
+        </div>
+        <div class="">
+          <a href="edit-profile">Profil</a>
+          
+        </div>
+        <div class="">
+          <a href="edit-photo">Fotoğraf</a>
+        </div>
+        
+        <div class="">
+          <a href="reset-password">Hesap</a>
+        </div>
+        <div class="">
+          <a href="logout">Oturum Kapat</a>
+        </div>
+      </div>
+    </div>
+    <div style="width: 100%; float: left;" class="hr-style">
+     
+    </div>
+    
+    <div style=" display: inline-block;  " class="sag-div">
+      
+      <div style="width: 100%;" class="sag-content ">
+        <div style="text-align: center; margin-top: 10px; "  class="">
+          <h3>Herkese Açık Profil</h3>
+            
+         </div>
+       
+         <div class="sag-content-icerik">
+           <form action="edit-profile" method="POST">
+            <div class="form-group">
+              <label for="name">Kullanıcı Adı</label>
+              <input
+                type="name"
+                id="nickname"
+                name="nickname"
+                class="form-control"
+                value="<%=user.nickname%>"
+               
+              />
+            </div>
+             <div class="form-group">
+               <label for="name">Ad</label>
+               <input
+                 type="name"
+                 id="name"
+                 name="name"
+                 class="form-control"
+                 placeholder="İsim Giriniz"
+                 value= "<%=user.name %>"
+               />
+             </div>
+             <div class="form-group">
+              <label for="name">Soyad</label>
+              <input
+                type="name"
+                id="surname"
+                name="surname"
+                class="form-control"
+                placeholder="Soyisim Giriniz"
+                value= "<%=user.surname %>"
+              />
+            </div>
+           
+
+             <div class="form-group">
+               <label for="email">Email</label>
+               <input
+                 type="email"
+                 id="email"
+                 name="email"
+                 class="form-control"
+                 placeholder="Email Giriniz"
+                 value= <%=user.email %>
+                 disabled="disabled"
+               />
+             </div>
+             
+             
+               <button type="submit" class="arabtn btn-block">
+                 Güncelle
+               </button>
+             
+             
+           </form>
+ 
+         </div>
+      </div>
+        
+
+        
+     
+    </div>
+
+
+
+  </div>
+   
+
+  
+
+    
+   
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      
+     
+      <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  -->
+</body>
+</html>

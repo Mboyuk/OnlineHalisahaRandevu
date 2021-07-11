@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halı Saha ÖDeme</title>
+    <link rel="shortcut icon" href="/photo/H.png" type="image/x-icon" />
+
+   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" >
+
+    <link rel="stylesheet" href="/navbar.css">
+</head>
+<body>
+  
+ 
+  <%- include('inc/navbar'); %>
+
+ 
+
+        <div style="width: 100%; margin-top: 120px !important;" class="row mt-5">
+          <div class="col-md-6 m-auto">
+            
+
+            <div class="card card-body">
+              <h1 class="text-center mb-3">
+                <i style="color: rgb(66, 66, 240);" class="fas fa-credit-card"></i><span > Ödeme Bilgileri</span>
+              </h1>
+              <hr>
+              <%- include('partials/messages'); %>
+                <div class="row">
+                   <h3> <span style="font-weight: bold;">Rezervasyon Tarihi: </span> <%=tarih%></h3> 
+                </div>
+                <div class="row">
+                    <h3> <span style="font-weight: bold;">Rezervasyon Saati: </span> <%=saat%></h3>
+                </div>
+              <form style="margin-top: 20px;" action="reservation" method="POST">
+                <div class="form-group">
+                  <label for="name">Kart Üzerindeki İsim</label>
+                  <input
+                    type="name"
+                    id="name"
+                    name="name"
+                    class="form-control"
+                    placeholder="Kart Üzerindeki İsim Giriniz"
+                    value="<%= typeof name != 'undefined' ? name : '' %>"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="email">Kart Numarası</label>
+                  <input
+                    type="name"
+                    id="name2"
+                    name="name2"
+                    class="form-control"
+                    placeholder="Kart Numarası Giriniz"
+                    value="<%= typeof email != 'undefined' ? email : '' %>"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="password">Ay</label>
+                  <select data-purpose="expiry-month" autocomplete="cc-exp-month" class="form-control"><option value="" disabled="">AA</option><option value="1">01</option><option value="2">02</option><option value="3">03</option><option value="4">04</option><option value="5">05</option><option value="6">06</option><option value="7">07</option><option value="8">08</option><option value="9">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select>
+                </div>
+                <div class="form-group">
+                  <label for="password2">Yıl</label>
+                  <select data-purpose="expiry-year" autocomplete="cc-exp-year" class="form-control"><option value="" disabled="">YYYY</option><option value="2021">2021</option><option value="2022">2022</option><option value="2023">2023</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option><option value="2027">2027</option><option value="2028">2028</option><option value="2029">2029</option><option value="2030">2030</option><option value="2031">2031</option><option value="2032">2032</option><option value="2033">2033</option><option value="2034">2034</option><option value="2035">2035</option><option value="2036">2036</option><option value="2037">2037</option><option value="2038">2038</option><option value="2039">2039</option><option value="2040">2040</option><option value="2041">2041</option></select>
+
+                </div>
+                <%if(isReservOk){%>
+                    <button type="submit" class="btn btn-primary btn-block">
+                      Ödemeyi Tamamla
+                    </button>
+                  <%}else{%>
+
+                    <p>Rezervasyon Yapamazsınız</p>
+
+                  <%}%>
+                
+                 
+                
+                
+              </form>
+             
+            </div>
+          </div>
+        </div>
+
+         
+
+       
+     
+
+      
+    <!-- /#page-content-wrapper -->
+
+  </div>
+ 
+
+  
+
+    <!-- <form action="kayit" method="POST">
+        <div class="container">
+            <div class="form-group">
+                <label >name</label>
+                <input type="text" name="name" class="form-control" id="exampletext" aria-describedby="emailHelp" placeholder="Enter name">
+               
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              
+              <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+        </div>  
+    </form> -->
+      
+       
+       
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <script>
+        $("#menu-toggle").click(function(e) {
+          e.preventDefault();
+          $("#wrapper").toggleClass("toggled");
+        });
+      </script>
+    
+
+</body>
+</html>

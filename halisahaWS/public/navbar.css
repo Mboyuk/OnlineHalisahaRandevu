@@ -1,0 +1,107 @@
+*{
+    box-sizing: border-box;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  }
+
+ #ustNavbar{
+    background-color: #008641;
+    height: 80px;
+}
+
+a:hover {
+    color: rgb(82, 53, 53) !important;
+}
+.arabtn{
+    border: 1px solid #28a745;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    padding: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.arabtn:hover{
+    background-color: #F3E300;
+    color: black;
+
+}
+.droptas{
+    background-color: #28a745;
+    color: white;
+}
+.droptas a{
+    background-color: #28a745;
+    color: white;
+}
+.droptas a:hover{
+    background-color: #F3E300;
+    color: black;
+}
+.search{
+    border-radius: 5px;
+    border:1px solid #28a745;
+    padding-top: 5px;
+    padding-bottom: 5px;
+} 
+
+
+@media screen and (min-width:1px) and (max-width:767px) {
+
+
+    
+    .search{
+        width: 180px;
+        /* background-color: red; */
+    }
+    
+    
+    
+}
+@media screen and (min-width:768px) and (max-width:991px) {
+
+   
+    .search{
+        width: 280px;
+        /* background-color: blue; */
+    }
+
+   
+    
+    
+    
+}
+
+@media screen and (min-width:992px) and (max-width:1199px) {
+
+
+
+    .aramaForm{
+        margin-left: 20%;
+    }
+    .search{
+        width: 480px;
+        /* background-color: yellow; */
+        
+    }
+    
+    
+}
+
+@media screen and (min-width:1200px) {
+
+    .aramaForm{
+        margin-left: 25%;
+    }
+    .search{
+        width: 580px;
+        /* background-color: green; */
+    }
+
+    
+    
+    
+}
+

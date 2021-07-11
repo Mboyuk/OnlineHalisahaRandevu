@@ -1,0 +1,21 @@
+.arabtn{
+    border: 1px solid #28a745;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    padding: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.arabtn:hover{
+    background-color: #F3E300;
+    color: black;
+
+}
+.myborder{
+    border: 5px solid #28a745 ;
+    border-radius: 10px;
+}
+div input{
+    border: 2px solid #28a745 !important;
+}
