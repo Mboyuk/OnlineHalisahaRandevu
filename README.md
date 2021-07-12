@@ -4,7 +4,7 @@ Türkiyenin 81 ilinde kayıt yaptıran tüm halı sahaları görüntüleyebilece
 
 # Yapabileceğiniz İşlemler
 
-1. # Kayıt
+1. # Giriş
 
 İstediğiniz halı sahanın özelliklerini inceleyebilirsiniz.
 
