@@ -1,4 +1,12 @@
-# OnlineHalisahaRandevu!
+# Online Halisaha Randevu Sistemi
+
+Türkiyenin 81 ilinde kayıt yaptıran tüm halı sahaları görüntüleyebileceğiniz bir web sitesidir.
+
+# Yapabileceğiniz İşlemler
+
+1. # Kayıt
+
+İstediğiniz halı sahanın özelliklerini inceleyebilirsiniz.
 
 # Kayıt
 
