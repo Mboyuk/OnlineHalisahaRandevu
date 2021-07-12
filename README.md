@@ -33,4 +33,22 @@ Arama sayfasına girerek halı saha araması gerçekleştirebilirsiniz. Halı sa
 ![halısahafilitre](https://user-images.githubusercontent.com/60795428/125278649-a82bd880-e31b-11eb-8572-c37476f0d2db.png)
 
 
+# Randevu Alma
+
+Halı saha özelliklerini, halı saha yorumlarını, halı saha fotoğraflarını ve halı saha bilgilerini detaylı bir şekilde görüntüleyebilirsiniz. Dilerseniz belirlediğiniz saatte randevu alabilirsiniz.
+
+![halısahasayfası](https://user-images.githubusercontent.com/60795428/125279221-5fc0ea80-e31c-11eb-96be-e0a1ff1aa124.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
