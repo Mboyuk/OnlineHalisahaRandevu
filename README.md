@@ -40,6 +40,15 @@ Halı saha özelliklerini, halı saha yorumlarını, halı saha fotoğrafların�
 ![halısahasayfası](https://user-images.githubusercontent.com/60795428/125279221-5fc0ea80-e31c-11eb-96be-e0a1ff1aa124.png)
 
 
+# Halı Saha Düzenleme
+
+Eğer halı saha sahibiyseniz; halı sahanın tüm özelliklerini güncelleyebilir, geçmiş saatteki randevularınıza video yükleyebilirsiniz.
+
+
+![edithalısaha](https://user-images.githubusercontent.com/60795428/125279752-fab9c480-e31c-11eb-8a1e-7e9276177438.png)
+
+
+
 
 
 
