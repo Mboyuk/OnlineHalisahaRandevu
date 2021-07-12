@@ -54,6 +54,13 @@ Profilinize girerek kullanıcı bilgilerinizi güncelleyebilirsiniz.
 
 ![editprofile](https://user-images.githubusercontent.com/60795428/125280018-44a2aa80-e31d-11eb-9731-25b48a9bad9c.png)
 
+# Şifre Güncelleme
+
+Kayıtlı E-mail adresinizi ve şifrenizi girerek yeni şifre belirleyebilirsiniz.
+
+![resetpassword2](https://user-images.githubusercontent.com/60795428/125280510-cd214b00-e31d-11eb-8405-ce1263ba3948.png)
+
+
 
 
 
