@@ -67,6 +67,13 @@ Randevu aldığınız halı sahaların randevu bilgilerini görüntüleyebilirsi
 
 ![gecmismaclar](https://user-images.githubusercontent.com/60795428/125281126-84b65d00-e31e-11eb-84aa-21837dd9f912.png)
 
+# Şifremi Unuttum
+
+Şifrenizi unuttuysanız kayıtlı E-mail adresinizi girip E-mailinize gönderilen yönergeleri uygulayarak yeni şifre belirleyebilirsiniz.
+
+![resetpassword](https://user-images.githubusercontent.com/60795428/125281556-073f1c80-e31f-11eb-8dd9-e505845af002.png)
+
+
 
 
 
