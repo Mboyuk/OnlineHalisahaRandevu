@@ -86,23 +86,10 @@ Randevu aldığınız halı sahaların randevu bilgilerini görüntüleyebilirsi
 
 ![resetpassword](https://user-images.githubusercontent.com/60795428/125281556-073f1c80-e31f-11eb-8dd9-e505845af002.png)
 
+# Kısa Video
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+https://user-images.githubusercontent.com/60795428/125285988-f04ef900-e323-11eb-9431-0034ee039e5d.mp4
 
 
