@@ -2,11 +2,16 @@
 
 Türkiyenin 81 ilinde kayıt yaptıran tüm halı sahaları görüntüleyebileceğiniz bir web sitesidir.
 
-# Yapabileceğiniz İşlemler
+# Kullanılan Teknolojiler
+1. Node.js
+2. Express.js
+3. MongoDB
+4. HTML
+5. CSS
+6. Bootstrap
+7. JavaScript
 
-1. # Giriş
 
-İstediğiniz halı sahanın özelliklerini inceleyebilirsiniz.
 
 # Kayıt
 
