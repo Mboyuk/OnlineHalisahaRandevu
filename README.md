@@ -61,6 +61,14 @@ Kayıtlı E-mail adresinizi ve şifrenizi girerek yeni şifre belirleyebilirsini
 ![resetpassword2](https://user-images.githubusercontent.com/60795428/125280510-cd214b00-e31d-11eb-8405-ce1263ba3948.png)
 
 
+# Geçmiş Maçlar
+
+Randevu aldığınız halı sahaların randevu bilgilerini görüntüleyebilirsiniz. İsterseniz randevu aldığınız halı sahalara puan verip yorum yapabilirsiniz. Halı saha sahibi aldığınız randevuya video yüklemişse videoyu izleyebilirsiniz.
+
+![gecmismaclar](https://user-images.githubusercontent.com/60795428/125281126-84b65d00-e31e-11eb-84aa-21837dd9f912.png)
+
+
+
 
 
 
