@@ -26,4 +26,11 @@ Seçtiğiniz şehirdeki halı saha reklamlarını görüntüleyebilirsiniz...
 
 ![halısahareklam](https://user-images.githubusercontent.com/60795428/125278049-e5439b00-e31a-11eb-8787-ef58a6b5d7dd.png)
 
+# Halı Saha Arama
+
+Arama sayfasına girerek halı saha araması gerçekleştirebilirsiniz. Halı saha özelliklerini seçip filitre uygulayabilirsiniz. Halı sahaları artan fiyat, yorum sayısı gibi kriterlere göre sıralayabilirsiniz...
+
+![halısahafilitre](https://user-images.githubusercontent.com/60795428/125278649-a82bd880-e31b-11eb-8572-c37476f0d2db.png)
+
+
 
