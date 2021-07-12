@@ -48,8 +48,11 @@ Eğer halı saha sahibiyseniz; halı sahanın tüm özelliklerini güncelleyebil
 ![edithalısaha](https://user-images.githubusercontent.com/60795428/125279752-fab9c480-e31c-11eb-8a1e-7e9276177438.png)
 
 
+# Profil
 
+Profilinize girerek kullanıcı bilgilerinizi güncelleyebilirsiniz.
 
+![editprofile](https://user-images.githubusercontent.com/60795428/125280018-44a2aa80-e31d-11eb-9731-25b48a9bad9c.png)
 
 
 
